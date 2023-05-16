@@ -7,7 +7,10 @@ private:
 	int m_score;
 public:
 	FootballTeam(std::string);
-	void count_score();
+	
 	std::string get_name() const;
 	int get_score() const;
+
+	void count_score();
+	bool operator>(const FootballTeam&);
 };

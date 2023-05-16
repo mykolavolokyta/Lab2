@@ -2,6 +2,7 @@
 #include <exception>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "Directory.h"
 #include "functions.h"
 #include "DirectoryNotFoundException.h"
@@ -22,13 +23,16 @@ int main(int argc, char** argv)
             if (csv::is_csv(file)) {
                 Reader reader(file);
                 auto rows = reader.read();
-                for (auto& row : rows) {
+                for (const auto& row : rows) {
                     FootballTeam team(row);
                     team.count_score();
-                    std::cout << team.get_name() << ": " << team.get_score() << '\n';
                     teams.push_back(team);
                 }
             }
+        }
+        std::sort(teams.begin(), teams.end(), std::greater<>());
+        for (auto& team : teams) {
+            std::cout << team.get_name() << ": " << team.get_score() << '\n';
         }
     }
     catch (DirectoryNotFoundException& exception)

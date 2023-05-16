@@ -3,15 +3,17 @@
 #include <string>
 #include "FootballMatch.h"
 
-FootballTeam::FootballTeam(std::string row) {
+FootballTeam::FootballTeam(std::string row): m_score(0) {
     std::string::size_type pos = row.find(',');
     if (pos != std::string::npos)
     {
         m_name = row.substr(0, pos);
         m_matches = row.substr(pos + 1);
-        m_score = 0;
     }
 }
+
+std::string FootballTeam::get_name() const { return m_name; }
+int FootballTeam::get_score() const { return m_score; }
 
 void FootballTeam::count_score() {
     std::string::size_type pos1 = 0, pos2 = 0;
@@ -25,5 +27,6 @@ void FootballTeam::count_score() {
     m_score += match.get_points();
 }
 
-std::string FootballTeam::get_name() const { return m_name; }
-int FootballTeam::get_score() const { return m_score; }
+bool FootballTeam::operator>(const FootballTeam& other) {
+    return m_score > other.m_score;
+}
