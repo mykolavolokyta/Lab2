@@ -13,3 +13,5 @@ int FootballMatch::get_points() const {
 	if (a == b) return 1;
 	return 0;
 }
+
+FootballMatch::~FootballMatch() {}

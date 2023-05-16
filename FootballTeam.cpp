@@ -30,3 +30,5 @@ void FootballTeam::count_score() {
 bool FootballTeam::operator>(const FootballTeam& other) {
     return m_score > other.m_score;
 }
+
+FootballTeam::~FootballTeam() {}

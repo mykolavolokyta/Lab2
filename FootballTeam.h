@@ -13,4 +13,6 @@ public:
 
 	void count_score();
 	bool operator>(const FootballTeam&);
+
+	~FootballTeam();
 };

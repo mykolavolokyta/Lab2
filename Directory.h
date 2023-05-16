@@ -8,6 +8,8 @@ private:
 	std::string m_dirmame;
 public:
 	Directory(const char*);
+
 	std::vector<std::string> read() const;
+
 	~Directory();
 };

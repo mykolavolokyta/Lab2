@@ -16,5 +16,8 @@ std::vector<std::string> Reader::read() const {
 		std::getline(in, row);
 		if (i != 0) rows.push_back(row);
 	}
+	in.close();
 	return rows;
 }
+
+Reader::~Reader() {}

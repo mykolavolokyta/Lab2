@@ -8,6 +8,8 @@
 #include "DirectoryNotFoundException.h"
 #include "Reader.h"
 #include "FootballTeam.h"
+#include "Writer.h"
+#include "FileCannotBeCreatedException.h"
 
 int main(int argc, char** argv)
 {
@@ -34,8 +36,14 @@ int main(int argc, char** argv)
         for (auto& team : teams) {
             std::cout << team.get_name() << ": " << team.get_score() << '\n';
         }
+        Writer writer("results.csv");
+        writer.write(teams);
     }
     catch (DirectoryNotFoundException& exception)
+    {
+        std::cout << exception.what();
+    }
+    catch (FileCannotBeCreatedException& exception)
     {
         std::cout << exception.what();
     }

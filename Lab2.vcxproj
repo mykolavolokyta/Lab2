@@ -136,14 +136,17 @@
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Reader.cpp" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Directory.h" />
     <ClInclude Include="DirectoryNotFoundException.h" />
+    <ClInclude Include="FileCannotBeCreatedException.h" />
     <ClInclude Include="FootballMatch.h" />
     <ClInclude Include="FootballTeam.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="Reader.h" />
+    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
