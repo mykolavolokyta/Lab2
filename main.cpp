@@ -1,7 +1,11 @@
 #include <iostream>
+#include <exception>
+#include <vector>
+#include <string>
 #include "Directory.h"
 #include "functions.h"
 #include "DirectoryNotFoundException.h"
+#include "Reader.h"
 
 int main(int argc, char** argv)
 {
@@ -14,11 +18,19 @@ int main(int argc, char** argv)
         std::vector<std::string> files = dir.read();
         for (const auto& file : files) {
             if (csv::is_csv(file)) {
-                std::cout << file << '\n';
+                Reader reader(file);
+                auto rows = reader.read();
+                for (auto row : rows) {
+                    std::cout << row << '\n';
+                }
             }
         }
     }
     catch (DirectoryNotFoundException& exception)
+    {
+        std::cout << exception.what();
+    }
+    catch (std::exception& exception)
     {
         std::cout << exception.what();
     }
