@@ -131,6 +131,8 @@
     <ClCompile Include="Directory.cpp">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp17</LanguageStandard>
     </ClCompile>
+    <ClCompile Include="FootballMatch.cpp" />
+    <ClCompile Include="FootballTeam.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Reader.cpp" />
@@ -138,6 +140,8 @@
   <ItemGroup>
     <ClInclude Include="Directory.h" />
     <ClInclude Include="DirectoryNotFoundException.h" />
+    <ClInclude Include="FootballMatch.h" />
+    <ClInclude Include="FootballTeam.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="Reader.h" />
   </ItemGroup>

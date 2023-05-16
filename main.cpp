@@ -6,6 +6,7 @@
 #include "functions.h"
 #include "DirectoryNotFoundException.h"
 #include "Reader.h"
+#include "FootballTeam.h"
 
 int main(int argc, char** argv)
 {
@@ -16,12 +17,16 @@ int main(int argc, char** argv)
     try {
         Directory dir(argv[1]);
         std::vector<std::string> files = dir.read();
+        std::vector<FootballTeam> teams;
         for (const auto& file : files) {
             if (csv::is_csv(file)) {
                 Reader reader(file);
                 auto rows = reader.read();
-                for (auto row : rows) {
-                    std::cout << row << '\n';
+                for (auto& row : rows) {
+                    FootballTeam team(row);
+                    team.count_score();
+                    std::cout << team.get_name() << ": " << team.get_score() << '\n';
+                    teams.push_back(team);
                 }
             }
         }

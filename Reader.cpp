@@ -11,10 +11,10 @@ std::vector<std::string> Reader::read() const {
 	int number;
 	in >> number;
 	std::vector<std::string> rows;
-	for (int i = 0; i < number; i++) {
+	for (int i = 0; i < number + 1; i++) {
 		std::string row;
 		std::getline(in, row);
-		rows.push_back(row);
+		if (i != 0) rows.push_back(row);
 	}
 	return rows;
 }
