@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Directory.h"
+#include "functions.h"
 #include "DirectoryNotFoundException.h"
 
 int main(int argc, char** argv)
@@ -12,7 +13,9 @@ int main(int argc, char** argv)
         Directory dir(argv[1]);
         std::vector<std::string> files = dir.read();
         for (const auto& file : files) {
-            std::cout << file << '\n';
+            if (csv::is_csv(file)) {
+                std::cout << file << '\n';
+            }
         }
     }
     catch (DirectoryNotFoundException& exception)
