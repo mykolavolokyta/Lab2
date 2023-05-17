@@ -9,7 +9,7 @@ int FootballMatch::get_points() const {
 	char delim;
 	std::stringstream ss(m_match);
 	if (ss >> a >> delim >> b);
-	if (!ss) {
+	if (!ss || delim != ':' || ss.rdbuf()->in_avail() != 0) {
 		throw std::exception(("[ERROR] Cannot get result of match: " + m_match).c_str());
 	}
 	if (a > b) return 3;

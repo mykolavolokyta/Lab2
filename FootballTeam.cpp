@@ -3,7 +3,7 @@
 #include <string>
 #include "FootballMatch.h"
 
-FootballTeam::FootballTeam(std::string name, std::vector<FootballMatch> matches): m_score(0), m_name(name), m_matches(matches) { }
+FootballTeam::FootballTeam(std::string name, std::vector<FootballMatch> matches) : m_score(0), m_name(name), m_matches(matches) {}
 
 std::string FootballTeam::get_name() const { return m_name; }
 int FootballTeam::get_score() const { return m_score; }
