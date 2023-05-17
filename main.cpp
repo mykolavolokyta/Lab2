@@ -5,11 +5,10 @@
 #include <algorithm>
 #include "Directory.h"
 #include "functions.h"
-#include "DirectoryNotFoundException.h"
 #include "Reader.h"
 #include "FootballTeam.h"
 #include "Writer.h"
-#include "FileCannotBeCreatedException.h"
+#include "Handler.h"
 
 int main(int argc, char** argv)
 {
@@ -26,7 +25,8 @@ int main(int argc, char** argv)
                 Reader reader(file);
                 auto rows = reader.read();
                 for (const auto& row : rows) {
-                    FootballTeam team(row);
+                    Handler handler(row);
+                    auto team = handler.get_team();
                     team.count_score();
                     teams.push_back(team);
                 }
@@ -38,14 +38,6 @@ int main(int argc, char** argv)
         }
         Writer writer("results.csv");
         writer.write(teams);
-    }
-    catch (DirectoryNotFoundException& exception)
-    {
-        std::cout << exception.what();
-    }
-    catch (FileCannotBeCreatedException& exception)
-    {
-        std::cout << exception.what();
     }
     catch (std::exception& exception)
     {

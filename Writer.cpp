@@ -1,11 +1,11 @@
 #include "Writer.h"
 #include <fstream>
-#include "FileCannotBeCreatedException.h"
+#include <exception>
 
 Writer::Writer(std::string filename) : m_filename(filename) {
 	std::ofstream out(m_filename);
 	if (!out) {
-		throw FileCannotBeCreatedException("[ERROR] Cannot create a file with name \"" + m_filename + "\".");
+		throw std::exception(("[ERROR] Cannot create a file with name \"" + m_filename + "\".").c_str());
 	}
 	out.close();
 }

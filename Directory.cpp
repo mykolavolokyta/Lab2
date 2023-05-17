@@ -1,5 +1,5 @@
 #include "Directory.h"
-#include "DirectoryNotFoundException.h"
+#include <exception>
 
 Directory::Directory(const char* dirname): m_dirmame(dirname){}
 
@@ -7,7 +7,7 @@ std::vector<std::string> Directory::read() const {
 	std::filesystem::path path(m_dirmame);
 	
 	if (!std::filesystem::is_directory(path)) {
-		throw DirectoryNotFoundException("[ERROR] Directory with name \"" + m_dirmame + "\" not found.");
+		throw std::exception(("[ERROR] Directory with name \"" + m_dirmame + "\" not found.").c_str());
 	}
 	
 	std::vector<std::string> files;
